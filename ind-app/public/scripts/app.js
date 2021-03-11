@@ -3,67 +3,62 @@
 console.log('App.js is running ...');
 
 //JSX - JavaScript XML
-var template = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    'Welcome to Indecision APP'
-  ),
-  React.createElement(
-    'p',
-    null,
-    'There is my test project for REACT course by Andrew Mead'
-  ),
-  React.createElement(
-    'ol',
-    null,
-    React.createElement(
-      'li',
-      null,
-      'Item #1'
-    ),
-    React.createElement(
-      'li',
-      null,
-      'Item #2'
-    ),
-    React.createElement(
-      'li',
-      null,
-      'Item #3'
-    ),
-    React.createElement(
-      'li',
-      null,
-      'Item #4'
-    ),
-    React.createElement(
-      'li',
-      null,
-      'Item #5'
-    )
-  )
-);
 
+var userName = 'Iurii Lopatenko';
+var userAge = 34;
+var userLocation = 'Los Angeles, CA';
+
+var user = {
+  name: 'John Doe',
+  age: 41,
+  location: 'Dallas, TX'
+};
 var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Iurii Lopatenko'
+    'JSX template #1'
+  ),
+  React.createElement(
+    'h2',
+    null,
+    userName.toUpperCase()
   ),
   React.createElement(
     'p',
     null,
-    'Age: 34'
+    'Age: ',
+    userAge + 5
   ),
   React.createElement(
     'p',
     null,
-    'Location: Los Angeles'
+    'Location: ',
+    userLocation
+  ),
+  React.createElement(
+    'h1',
+    null,
+    'JSX template #2'
+  ),
+  React.createElement(
+    'h2',
+    null,
+    user.name.toLowerCase()
+  ),
+  React.createElement(
+    'p',
+    null,
+    'Age: ',
+    user.age * 2
+  ),
+  React.createElement(
+    'p',
+    null,
+    'Location: ',
+    user.location
   )
 );
 
