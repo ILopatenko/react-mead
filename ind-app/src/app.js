@@ -1,30 +1,53 @@
-console.log('App.js is running ...');
-
 //JSX - JavaScript XML
-
-let userName = 'Iurii Lopatenko';
-let userAge = 34;
-let userLocation = 'Los Angeles, CA';
-
+//012 - THEORY
 let user = {
-  name: 'John Doe',
-  age: 41,
-  location: 'Dallas, TX',
+  name: 'Iurii Lopatenko',
+  age: 34,
+  location: 'Los Angeles, CA, USA',
 };
-const templateTwo = (
-  <div>
-    <h1>JSX template #1</h1>
-    <h2>{userName.toUpperCase()}</h2>
-    <p>Age: {userAge + 5}</p>
-    <p>Location: {userLocation}</p>
 
-    <h1>JSX template #2</h1>
-    <h2>{user.name.toLowerCase()}</h2>
-    <p>Age: {user.age * 2}</p>
-    <p>Location: {user.location}</p>
+//Ternary operator
+const getLocation = user.location ? (
+  <p>Location: {user.location}</p>
+) : undefined;
+
+//IF
+const checkUserName = (nameToCheck) => {
+  if (nameToCheck) {
+    return nameToCheck;
+  } else {
+    return 'ANONYMOUS';
+  }
+};
+
+const templateTheory = (
+  <div>
+    <h1>JSX template</h1>
+    <h2>{checkUserName(user.name)}</h2>
+    {/*Logical compare*/}
+    {user.age && user.age >= 18 && <p>Age: {user.age}</p>}
+    {getLocation}
   </div>
 );
 
-let appRoot = document.getElementById('app');
+//012 PRACTICE
+const app = {
+  title: 'Indecision App',
+  subtitle: 'There is something subtitle for an APP ...',
+  options: ['One', 'Two', 'Three'],
+};
 
-ReactDOM.render(templateTwo, appRoot);
+let templatePractice = (
+  <div>
+    <h1>{app.title}</h1>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    {app.options.length > 0 ? 'Here are your options:' : 'No any options'}
+    {app.options.map((element, index) => (
+      <p key={index}>
+        Option #{index + 1} is: {element}
+      </p>
+    ))}
+  </div>
+);
+let appRoot = document.getElementById('app');
+ReactDOM.render(templatePractice, appRoot);
