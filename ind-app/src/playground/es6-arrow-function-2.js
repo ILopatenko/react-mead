@@ -1,36 +1,42 @@
-'use strict';
-
 console.log('hello from es6-arrow-function-2.js!');
 
 //Arguments object - no longer bound with arrow functions
 //
 //ES5 function
-var add = function add(a, b) {
+const add = function (a, b) {
   console.log(arguments);
-  console.log('You want to know how much will be ' + a + ' plus ' + b + ' .... I think it should be something like ' + (a + b));
+  console.log(
+    `You want to know how much will be ${a} plus ${b} .... I think it should be something like ${
+      a + b
+    }`
+  );
 };
 add(5, 7);
 
 //ES6 function
-var add2 = function add2(a, b) {
+let add2 = (a, b) => {
   //console.log(arguments); there will be an error!
-  console.log('You want to know how much will be ' + a + ' plus ' + b + ' .... I think it should be something like ' + (a + b));
+  console.log(
+    `You want to know how much will be ${a} plus ${b} .... I think it should be something like ${
+      a + b
+    }`
+  );
 };
 add2(300, 505);
 
 //THAT in ES5
 console.log('THAT in ES5');
-var userThat = {
+const userThat = {
   name: 'Iurii',
   cities: ['Moscow', 'Los Angeles'],
-  printPlaces: function printPlaces() {
+  printPlaces: function () {
     console.log(this.name);
     console.log(this.cities);
-    var that = this;
+    const that = this;
     this.cities.forEach(function (city) {
       console.log(that.name + ' has lived in ' + city);
     });
-  }
+  },
 };
 userThat.printPlaces();
 
@@ -51,18 +57,16 @@ userThis.printPlaces(); */
 
 //THIS in ES6
 console.log('THAT in ES6');
-var userThisES6 = {
+const userThisES6 = {
   name: 'Iurii',
   cities: ['Moscow', 'Los Angeles'],
-  printPlaces: function printPlaces() {
-    var _this = this;
-
+  printPlaces: function () {
     console.log(this.name);
     console.log(this.cities);
-    this.cities.forEach(function (city) {
-      console.log(_this.name + ' has lived in ' + city);
+    this.cities.forEach((city) => {
+      console.log(this.name + ' has lived in ' + city);
     });
-  }
+  },
 };
 userThisES6.printPlaces();
 
@@ -83,40 +87,34 @@ userThisES6Arrow.printPlaces(); */
 
 //THIS in ES6 - no arrow - IT WORKS!!!
 console.log('THAT in ES6 - no arrow');
-var userThisES6NoArrow = {
+const userThisES6NoArrow = {
   name: 'Iurii',
   cities: ['Moscow', 'Los Angeles'],
-  printPlaces: function printPlaces() {
-    var _this2 = this;
-
+  printPlaces() {
     //TEST of MAP method
     console.log('Test:');
-    var upperCase = this.cities.map(function (city) {
-      return _this2.name.toUpperCase() + ' has lived in ' + city.toUpperCase();
-    });
+    const upperCase = this.cities.map(
+      (city) => `${this.name.toUpperCase()} has lived in ${city.toUpperCase()}`
+    );
     console.log(upperCase);
     //END of TEST
 
     console.log(this.name);
     console.log(this.cities);
-    this.cities.forEach(function (city) {
-      console.log(_this2.name + ' has lived in ' + city);
+    this.cities.forEach((city) => {
+      console.log(this.name + ' has lived in ' + city);
     });
-  }
+  },
 };
 userThisES6NoArrow.printPlaces();
 
 //CHALLENGE
 console.log('CHALLENGE');
-var multiplier = {
+const multiplier = {
   numbers: [5, 4, 7, 45, 46, 97, 125, 10, 5, 456],
   multiplyBy: 456,
-  multiply: function multiply() {
-    var _this3 = this;
-
-    return this.numbers.map(function (number) {
-      return number * _this3.multiplyBy;
-    });
-  }
+  multiply() {
+    return this.numbers.map((number) => number * this.multiplyBy);
+  },
 };
 console.log(multiplier.multiply());
