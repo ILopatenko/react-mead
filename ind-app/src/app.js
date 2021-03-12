@@ -1,53 +1,24 @@
-//JSX - JavaScript XML
-//012 - THEORY
-const user = {
-  name: 'Iurii Lopatenko',
-  age: 34,
-  location: 'Los Angeles, CA, USA',
+//016 - Events and Attributes
+let count = 0;
+
+const addOne = () => {
+  console.log('addOne() is working ...');
+};
+const minusOne = () => {
+  console.log('minusOne() is working ...');
+};
+const reset = () => {
+  console.log('reset() is working ...');
 };
 
-//Ternary operator
-const getLocation = user.location ? (
-  <p>Location: {user.location}</p>
-) : undefined;
-
-//IF
-const checkUserName = (nameToCheck) => {
-  if (nameToCheck) {
-    return nameToCheck;
-  } else {
-    return 'ANONYMOUS';
-  }
-};
-
-const templateTheory = (
+const template016 = (
   <div>
-    <h1>JSX template</h1>
-    <h2>{checkUserName(user.name)}</h2>
-    {/*Logical compare*/}
-    {user.age && user.age >= 18 && <p>Age: {user.age}</p>}
-    {getLocation}
+    <h1>Count: {count}</h1>
+    <button onClick={addOne}> +1 </button>
+    <button onClick={reset}> reset </button>
+    <button onClick={minusOne}> -1 </button>
   </div>
 );
 
-//012 PRACTICE
-const app = {
-  title: 'Indecision App!',
-  subtitle: 'There is something subtitle for an APP ...',
-  options: ['One', 'Two', 'Three'],
-};
-
-let templatePractice = (
-  <div>
-    <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    {app.options.length > 0 ? 'Here are your options:' : 'No any options'}
-    {app.options.map((element, index) => (
-      <p key={index}>
-        Option #{index + 1} is: {element}
-      </p>
-    ))}
-  </div>
-);
 const appRoot = document.getElementById('app');
-ReactDOM.render(templatePractice, appRoot);
+ReactDOM.render(template016, appRoot);
