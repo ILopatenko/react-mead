@@ -49,7 +49,7 @@ var templateTheory = React.createElement(
 
 //012 PRACTICE
 var app = {
-  title: 'Indecision App',
+  title: 'Indecision App!',
   subtitle: 'There is something subtitle for an APP ...',
   options: ['One', 'Two', 'Three']
 };

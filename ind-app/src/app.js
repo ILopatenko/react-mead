@@ -1,6 +1,6 @@
 //JSX - JavaScript XML
 //012 - THEORY
-let user = {
+const user = {
   name: 'Iurii Lopatenko',
   age: 34,
   location: 'Los Angeles, CA, USA',
@@ -32,7 +32,7 @@ const templateTheory = (
 
 //012 PRACTICE
 const app = {
-  title: 'Indecision App',
+  title: 'Indecision App!',
   subtitle: 'There is something subtitle for an APP ...',
   options: ['One', 'Two', 'Three'],
 };
@@ -49,5 +49,5 @@ let templatePractice = (
     ))}
   </div>
 );
-let appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 ReactDOM.render(templatePractice, appRoot);
