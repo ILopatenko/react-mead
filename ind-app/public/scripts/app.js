@@ -10,6 +10,11 @@ var deleteOptions = function deleteOptions() {
   app.options = [];
   renderApp();
 };
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var newOption = app.options[randomNum];
+  alert(newOption);
+};
 var onFormSubmit = function onFormSubmit(e) {
   e.preventDefault();
   var option = e.target.elements.option.value;
@@ -50,18 +55,23 @@ var renderApp = function renderApp() {
       })
     ),
     React.createElement(
+      'button',
+      { disabled: app.options.length === 0, onClick: onMakeDecision },
+      'What should I do?'
+    ),
+    React.createElement(
+      'button',
+      { onClick: deleteOptions },
+      'Delete all the options'
+    ),
+    React.createElement(
       'form',
       { onSubmit: onFormSubmit },
       React.createElement('input', { type: 'text', name: 'option' }),
       React.createElement(
         'button',
         null,
-        'Add an option'
-      ),
-      React.createElement(
-        'button',
-        { onClick: deleteOptions },
-        'Delete all the options'
+        'Add option'
       )
     )
   );

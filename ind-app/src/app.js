@@ -1,4 +1,3 @@
-console.log('App.js is running ...');
 const app = {
   title: 'Indecision app',
   subtitle: 'Put your life in the hands of a computer',
@@ -7,6 +6,11 @@ const app = {
 const deleteOptions = () => {
   app.options = [];
   renderApp();
+};
+const onMakeDecision = () => {
+  const randomNum = Math.floor(Math.random() * app.options.length);
+  const newOption = app.options[randomNum];
+  alert(newOption);
 };
 const onFormSubmit = (e) => {
   e.preventDefault();
@@ -30,10 +34,13 @@ const renderApp = () => {
           <li key={index}>{eachOption}</li>
         ))}
       </ol>
+      <button disabled={app.options.length === 0} onClick={onMakeDecision}>
+        What should I do?
+      </button>
+      <button onClick={deleteOptions}>Delete all the options</button>
       <form onSubmit={onFormSubmit}>
         <input type='text' name='option'></input>
-        <button>Add an option</button>
-        <button onClick={deleteOptions}>Delete all the options</button>
+        <button>Add option</button>
       </form>
     </div>
   );
