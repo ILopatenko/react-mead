@@ -1,33 +1,37 @@
 'use strict';
 
-var isVisible = false;
-var changeIsVisible = function changeIsVisible() {
-  isVisible = !isVisible;
-  appRender();
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var appRoot = document.getElementById('app');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var appRender = function appRender() {
-  var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'h1',
-      null,
-      'Visibiliti Toggle'
-    ),
-    React.createElement(
-      'button',
-      { onClick: changeIsVisible },
-      isVisible ? 'Hide details' : 'Show details'
-    ),
-    isVisible && React.createElement(
-      'p',
-      null,
-      'There are some details ...'
-    )
-  );
-  ReactDOM.render(template, appRoot);
-};
-appRender();
+var Person = function () {
+  function Person() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+    var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+
+    _classCallCheck(this, Person);
+
+    this.name = name;
+    this.age = age;
+  }
+
+  _createClass(Person, [{
+    key: 'getGretting',
+    value: function getGretting() {
+      return 'Hello, ' + this.name;
+    }
+  }, {
+    key: 'getDescription',
+    value: function getDescription() {
+      return 'I think that ' + this.name + ' is ' + this.age + ' year(s) old!';
+    }
+  }]);
+
+  return Person;
+}();
+
+var me = new Person('Iurii Lopatenko', 34);
+console.log(me.getDescription());
+
+var other = new Person();
+console.log(other.getDescription());
