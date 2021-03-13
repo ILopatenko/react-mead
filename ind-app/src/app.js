@@ -1,39 +1,43 @@
-//016 - Events and Attributes
-let count = 0;
-
-const addOne = () => {
-  console.log('addOne() is working ...');
-  count += 1;
-  console.log(`Current value of count is ${count}`);
-  renderCounter();
+console.log('App.js is running ...');
+const app = {
+  title: 'Indecision app',
+  subtitle: 'Put your life in the hands of a computer',
+  options: [],
 };
-
-const minusOne = () => {
-  console.log('minusOne() is working ...');
-  count -= 1;
-  console.log(`Current value of count is ${count}`);
-  renderCounter();
+const deleteOptions = () => {
+  app.options = [];
+  renderApp();
 };
-
-const reset = () => {
-  console.log('reset() is working ...');
-  count = 0;
-  console.log(`Current value of count is ${count}`);
-  renderCounter();
+const onFormSubmit = (e) => {
+  e.preventDefault();
+  const option = e.target.elements.option.value;
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = '';
+    renderApp();
+  }
 };
-
-const appRoot = document.getElementById('app');
-
-const renderCounter = () => {
-  const template016 = (
+const renderApp = () => {
+  const template = (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={addOne}> +1 </button>
-      <button onClick={reset}> reset </button>
-      <button onClick={minusOne}> -1 </button>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>
+        {app.options.length > 0 ? 'Here are your options: ' : 'No any options'}
+      </p>
+      <ol>
+        {app.options.map((eachOption, index) => (
+          <li key={index}>{eachOption}</li>
+        ))}
+      </ol>
+      <form onSubmit={onFormSubmit}>
+        <input type='text' name='option'></input>
+        <button>Add an option</button>
+        <button onClick={deleteOptions}>Delete all the options</button>
+      </form>
     </div>
   );
-  ReactDOM.render(template016, appRoot);
+  ReactDOM.render(template, appRoot);
 };
-
-renderCounter();
+const appRoot = document.getElementById('app');
+renderApp();
