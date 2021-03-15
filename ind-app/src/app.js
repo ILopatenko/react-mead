@@ -1,9 +1,19 @@
 class IndecisionApp extends React.Component {
   render() {
+    const title = 'Indecision';
+    const subtitle = '!Put your life in the hands of computer!';
+    const options = [
+      'thing number one',
+      'thing number two',
+      'thing number three',
+      'thing number four',
+      'thing number five',
+    ];
     return (
       <div>
-        <Header />
-        <Options />
+        <Header title={title} subtitle={subtitle} />
+        <Action />
+        <Options options={options} />
         <AddOption />
       </div>
     );
@@ -14,8 +24,8 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <h1>INDECISION APP</h1>
-        <h1>Put your life in the hands of computer.</h1>
+        <h1>{this.props.title.toUpperCase()}</h1>
+        <h2>{this.props.subtitle}</h2>
       </div>
     );
   }
@@ -35,8 +45,10 @@ class Options extends React.Component {
   render() {
     return (
       <div>
-        THIS IS A TEXT FROM OPTIONS COMPONENT!!!
-        <Option />
+        Here are all the your options:<p>{this.props.options.length}</p>
+        {this.props.options.map((option, index) => (
+          <Option key={index} id={index} optionText={option} />
+        ))}
       </div>
     );
   }
@@ -44,7 +56,11 @@ class Options extends React.Component {
 
 class Option extends React.Component {
   render() {
-    return <div>THIS IS A SINGLE OPTOIN COMPONRNT!</div>;
+    return (
+      <div>
+        <h3>Option #{this.props.id + 1}:</h3> {this.props.optionText}
+      </div>
+    );
   }
 }
 
